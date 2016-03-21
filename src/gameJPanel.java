@@ -7,17 +7,17 @@ public class gameJPanel extends JPanel
 {
     private boolean gameStatePaused = false;
     private boolean soundMuted = false, gameKill = false; // will need to be changed after options panel is added
-    JButton bTemp1, bTemp2, bTemp3;
+    JButton bSpeed, bMode, bFlavor;
     int speed = 2, flavors = 3, mode = 1;
     public gameJPanel ()
     {   
         super();
-        bTemp1 = new JButton("Speed: " + speed);
-        bTemp2 = new JButton("Flavors: " + flavors);
-        bTemp3 = new JButton("Mode: " + mode);
-        add(bTemp1);
-        add(bTemp2);
-        add(bTemp3);
+        bSpeed = new JButton("Speed: " + speed);
+        bFlavor = new JButton("Flavors: " + flavors);
+        bMode = new JButton("Mode: " + mode);
+        add(bSpeed);
+        add(bFlavor);
+        add(bMode);
         System.out.println("game constructed");
     }
     // Pauses or resumes game loop
@@ -41,9 +41,9 @@ public class gameJPanel extends JPanel
         speed = inSpeed;
         flavors = inFlavors;
         mode = inMode;
-        bTemp1.setText("Speed: " + speed);
-        bTemp2.setText("Flavors: " + flavors);
-        bTemp3.setText("Mode: " + mode);
+        bSpeed.setText("Speed: " + speed);
+        bFlavor.setText("Flavors: " + flavors);
+        bMode.setText("Mode: " + mode);
     }
     // Quit current game
     public void gQuit() {
