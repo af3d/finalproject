@@ -1,14 +1,14 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class mainJFrame extends JFrame
+public class myJFrame extends JFrame
 {
-	public mainJFrame ()
+	public myJFrame ()
 	{
 		super ("Berkey Creamery");
 		
 
-  	 	mainJPanel mPanel = new mainJPanel();
+  	 	myJPanel mPanel = new myJPanel();
     
     	
     	

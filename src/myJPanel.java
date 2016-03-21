@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class mainJPanel extends JPanel implements ActionListener
+public class myJPanel extends JPanel implements ActionListener
 {
     instJPanel instP;
     scoresJPanel scoresP;
@@ -12,7 +12,7 @@ public class mainJPanel extends JPanel implements ActionListener
     gameJPanel gameP;
     menuJPanel menuP;
     menuBarJPanel mBarP;
-    public mainJPanel ()
+    public myJPanel ()
     {
         super();
         setLayout(new BorderLayout());

@@ -11,8 +11,8 @@ public class optionsJPanel extends JPanel implements ActionListener
     JRadioButton jrbNormal, jrbSurvival, jrbMarathon;
     ButtonGroup bgMode;
     optionsSlider jsSpeed, jsFlavors;
-    final static int DEFAULT_FLAVORS = 3, DEFAULT_SPEED = 2, DEFAULT_MODE = 1;
-    final static boolean DEFAULT_SOUND = true;
+    int DEFAULT_FLAVORS = 3, DEFAULT_SPEED = 2, DEFAULT_MODE = 1;
+    boolean DEFAULT_SOUND = true;
     int flavors = DEFAULT_FLAVORS, speed = DEFAULT_SPEED, mode = DEFAULT_MODE;
     boolean sound = DEFAULT_SOUND;
     public optionsJPanel ()
