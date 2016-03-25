@@ -81,11 +81,4 @@ public class menuBarJPanel extends JPanel {
     //public boolean getPaused() {
     //    return paused;
     //}
-    public void setMuted() {
-        bSound.doClick();
-    }
-
-    public void setMuted(boolean muted) {
-        bSound.setAltImage(muted);
-    }
 }

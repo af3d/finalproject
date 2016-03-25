@@ -29,12 +29,10 @@ import java.io.FileOutputStream;
  * String s = "fred";
  * x.writeObject(s);
  */
-
 /**
  *
  * @author fredfonseca
  */
-
 public class XML_240 {
 
     XMLEncoder xe;

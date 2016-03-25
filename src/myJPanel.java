@@ -69,6 +69,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         }
         if (state.equals("game")) {
             add(gameP, "Center");
+            gameP.gameStart();
         } else {
             remove(gameP);
         }
@@ -104,7 +105,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         if (obj == mBarP.bReturn) {
             gameOptions.storeOptions();
             switchPanel("menu");
-            
+
         }
 
         if (obj == menuP.bInst) {
@@ -137,7 +138,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             switchPanel("game");
             mBarP.setVisButtons(1);
             gameOptions.storeOptions();
-            gameP.gameStart();
+
         }
 
         // Toggles pause status
@@ -151,13 +152,13 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             mBarP.bSound.setAltImage();
             optionsP.bSound.setAltImage();
         }
-        if (obj == optionsP.jrbNormal){
+        if (obj == optionsP.jrbNormal) {
             gameOptions.setMode(1);
         }
-        if (obj == optionsP.jrbSurvival){
+        if (obj == optionsP.jrbSurvival) {
             gameOptions.setMode(2);
         }
-        if (obj == optionsP.jrbMarathon){
+        if (obj == optionsP.jrbMarathon) {
             gameOptions.setMode(3);
         }
     }
@@ -165,10 +166,10 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
     @Override
     public void stateChanged(ChangeEvent ce) {
         Object source = ce.getSource();
-        if (source == optionsP.jsFlavors){
+        if (source == optionsP.jsFlavors) {
             gameOptions.setFlavors(optionsP.jsFlavors.getValue());
         }
-        if (source == optionsP.jsSpeed){
+        if (source == optionsP.jsSpeed) {
             gameOptions.setSpeed(optionsP.jsSpeed.getValue());
         }
     }
