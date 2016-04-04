@@ -1,26 +1,30 @@
 public class coneSprite extends sprite{
-
-    coneSprite(String imagePath) {
-        super(imagePath);
-        setBounds(icon.getIconWidth() / 2, 0,
-                icon.getIconWidth(), icon.getIconHeight());
-        
+    int speed = 100;
+    
+    coneSprite() {
+        super();
     }
 
-    @Override
-    public void update() {
-        mouseLoc = getParent().getMousePosition();
-        if (mouseLoc == null)
-            return;
-        int yPos = getParent().getSize().height - icon.getIconHeight();
-        int delta = 0;
-        delta = mouseLoc.x - (getBounds().x + (getBounds().width / 2));
-        if (delta > 30) {
-            delta = 30;
+    public void init(int x, int y) {
+        this.setImage("images/gameP/coneCut.png");
+        this.setBounds(x, y,
+                this.width, this.height);  
+        this.x = x;
+        this.y = y;
+    }
+    
+    public void moveX(int inX) {
+        int delta = inX - (this.x + (this.width / 2));
+        
+        if (delta > speed) {
+            delta = speed;
         }
-        if (delta < -30) {
-            delta = -30;
+        if (delta < -speed) {
+            delta = -speed;
         }
-        setPosition(getBounds().x + delta, yPos);
+        
+        setPosition(this.x + delta, this.y);
+        this.x = this.getBounds().x;
+        
     }
 }

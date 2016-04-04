@@ -32,25 +32,13 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         mBarP = new menuBarJPanel(gameOptions);
 
         //Add Listeners
-        menuP.bGame.addActionListener(this);
-        menuP.bOptions.addActionListener(this);
-        menuP.bInst.addActionListener(this);
-        menuP.bScores.addActionListener(this);
-        menuP.bCredits.addActionListener(this);
-
-        mBarP.bGiveUp.addActionListener(this);
-        mBarP.bReturn.addActionListener(this);
-        mBarP.bPlay.addActionListener(this);
-        mBarP.bPause.addActionListener(this);
-        mBarP.bSound.addActionListener(this);
-
-        optionsP.jrbMarathon.addActionListener(this);
-        optionsP.jrbNormal.addActionListener(this);
-        optionsP.jrbSurvival.addActionListener(this);
-        optionsP.bSound.addActionListener(this);
-        optionsP.jsFlavors.addChangeListener(this);
-        optionsP.jsSpeed.addChangeListener(this);
-
+        for (JPanel j : new JPanel[] {menuP, mBarP, optionsP}) {
+            for (Component c : j.getComponents()) {
+                if (c instanceof imageButton) { 
+                    ((imageButton) c).addActionListener(this);
+                }
+            }            
+        }
         //Add panels
         switchPanel("menu");
     }
