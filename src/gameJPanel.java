@@ -140,16 +140,10 @@ public class gameJPanel extends JPanel implements MouseMotionListener, ActionLis
         for (Component c : this.getComponents()) {
             if (c instanceof flavorSprite) {
                 if (((flavorSprite) c).caught) {
-                    ((flavorSprite) c).setPosition(cone.x, topSprite.y + 30);
+                    ((flavorSprite) c).moveX(cone.x);
                 }
             }
         }
-        /*for (int x = 0; x < caughtCount; x++) {
-            System.out.println("caughtCount: " + caughtCount);
-            if (flavor[x].caught) {
-                    flavor[x].setPosition(cone.x, topSprite.y + 30);
-                }
-        }*/
     }
     
     public boolean collision(int xa1, int xb1,int xa2, int xb2){
