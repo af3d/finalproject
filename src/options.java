@@ -8,6 +8,10 @@
  *
  * @author DJ
  */
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class options {
 
     int mode;
@@ -16,9 +20,24 @@ public class options {
     boolean muted;
 
     public options() {
-
+        File f = new File("Options.xml");
+        if(!f.exists()) {
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            setDefaults();
+        }
     }
 
+    public void setDefaults() {
+        mode = 2;
+        speed = 3;
+        flavors = speed;
+        muted = false;
+        storeOptions();
+    }
     //==========================================================================
     public int getMode() {
         return this.mode;
@@ -26,6 +45,7 @@ public class options {
 
     public void setMode(int mode) {
         this.mode = mode;
+        storeOptions();
     }
 
     //==========================================================================
@@ -35,6 +55,7 @@ public class options {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+        storeOptions();
     }
 
     //==========================================================================
@@ -44,6 +65,7 @@ public class options {
 
     public void setFlavors(int flavors) {
         this.flavors = flavors;
+        storeOptions();
     }
 
     //==========================================================================

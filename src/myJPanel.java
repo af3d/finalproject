@@ -14,6 +14,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
     menuJPanel menuP;
     menuBarJPanel mBarP;
     options gameOptions;
+    scoreKeeper scores;
 
     public myJPanel() {
         super();
@@ -21,13 +22,14 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         //Initialize Options
         gameOptions = new options();
         gameOptions.getOptions();
+        scores = new scoreKeeper();
 
         //Initialize Panels        
         instP = new instJPanel();
-        scoresP = new scoresJPanel();
+        scoresP = new scoresJPanel(scores);
         creditsP = new creditsJPanel();
         optionsP = new optionsJPanel(gameOptions);
-        gameP = new gameJPanel(gameOptions);
+        gameP = new gameJPanel(gameOptions, scores);
         menuP = new menuJPanel();
         mBarP = new menuBarJPanel(gameOptions);
 
@@ -118,6 +120,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         }
 
         if (obj == menuP.bOptions) {
+            gameOptions.getOptions();
             mBarP.setVisButtons(2);
             switchPanel("options");
         }
@@ -140,13 +143,13 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             mBarP.bSound.setAltImage();
             optionsP.bSound.setAltImage();
         }
-        if (obj == optionsP.jrbNormal) {
+        if (obj == optionsP.jrbEasy) {
             gameOptions.setMode(1);
         }
-        if (obj == optionsP.jrbSurvival) {
+        if (obj == optionsP.jrbNormal) {
             gameOptions.setMode(2);
         }
-        if (obj == optionsP.jrbMarathon) {
+        if (obj == optionsP.jrbHard) {
             gameOptions.setMode(3);
         }
     }

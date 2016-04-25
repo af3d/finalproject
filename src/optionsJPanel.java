@@ -1,11 +1,13 @@
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class optionsJPanel extends JPanel {
+public class optionsJPanel extends JPanel implements ChangeListener {
 
     imageButton bMode, bSpeed, bFlavors, bSound;
-    JRadioButton jrbNormal, jrbSurvival, jrbMarathon;
+    JRadioButton jrbEasy, jrbNormal, jrbHard;
     ButtonGroup bgMode;
     optionsSlider jsSpeed, jsFlavors;
     options gameOpt;
@@ -28,20 +30,17 @@ public class optionsJPanel extends JPanel {
         System.out.println("Initializing optionsP");
 
         //Initialize and group RadioButtons
+        jrbEasy = new JRadioButton("Easy");
         jrbNormal = new JRadioButton("Normal");
-        jrbSurvival = new JRadioButton("Survival");
-        jrbMarathon = new JRadioButton("Marathon");
+        jrbHard = new JRadioButton("Hard");
         bgMode = new ButtonGroup();
+        bgMode.add(jrbEasy);
         bgMode.add(jrbNormal);
-        bgMode.add(jrbSurvival);
-        bgMode.add(jrbMarathon);
+        bgMode.add(jrbHard);
 
         //Initialize Sliders
         jsSpeed = new optionsSlider(JSlider.HORIZONTAL, 1, 5, gameOpt.getSpeed(), 1);
         jsFlavors = new optionsSlider(JSlider.HORIZONTAL, 1, 5, gameOpt.getFlavors(), 1);
-
-        saved = new JTextArea("Options Saved...");
-        saved.setVisible(false);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -52,11 +51,11 @@ public class optionsJPanel extends JPanel {
         add(bMode, c);
         c.gridy = 1;
         c.gridx = 0;
-        add(jrbNormal, c);
+        add(jrbEasy, c);
         c.gridx = 1;
-        add(jrbSurvival, c);
+        add(jrbNormal, c);
         c.gridx = 2;
-        add(jrbMarathon, c);
+        add(jrbHard, c);
         c.gridy = 2;
         c.gridx = 1;
         add(bSpeed, c);
@@ -70,7 +69,11 @@ public class optionsJPanel extends JPanel {
         add(bSound, c);
 
         setOptionScreen();
-
+        jsSpeed.addChangeListener(this);
+        jsFlavors.addChangeListener(this);
+        jrbEasy.addChangeListener(this);
+        jrbNormal.addChangeListener(this);
+        jrbHard.addChangeListener(this);
     }
 
     // Set values to values from xml
@@ -80,21 +83,41 @@ public class optionsJPanel extends JPanel {
 
         switch (gameOpt.getMode()) {
             case 1: {
-                jrbNormal.setSelected(true);
+                jrbEasy.setSelected(true);
                 break;
             }
             case 2: {
-                jrbSurvival.setSelected(true);
+                jrbNormal.setSelected(true);
                 break;
             }
             case 3: {
-                jrbMarathon.setSelected(true);
+                jrbHard.setSelected(true);
                 break;
             }
         }
 
         bSound.setAltImage(gameOpt.getMuted());
 
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent event) {
+        Object obj = event.getSource();
+        if (obj == jsSpeed) {
+            gameOpt.setSpeed(jsSpeed.getValue());
+        }
+        else if (obj == jsFlavors) {
+            gameOpt.setFlavors(jsFlavors.getValue());
+        }
+        else if (obj == jrbEasy) {
+            gameOpt.setMode(1);
+        }
+        else if (obj == jrbNormal) {
+            gameOpt.setMode(2);
+        }
+        else if (obj == jrbHard) {
+            gameOpt.setMode(3);
+        }
     }
 
 }

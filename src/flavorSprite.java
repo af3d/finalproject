@@ -8,6 +8,7 @@ public class flavorSprite extends sprite {
     int speed = 5, pWidth, pHeight, flavor;
     soundPlayer flavorDrop, flavorMiss;
     boolean muted, caught = false, stop = false;
+    String imagePath;
 
     public flavorSprite(boolean inMuted) {
         super();
@@ -21,12 +22,14 @@ public class flavorSprite extends sprite {
             Logger.getLogger(flavorSprite.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     public void setFlavor(int i, int pWidth, int pHeight) {
         this.flavor = i;
         this.pWidth = pWidth;
         this.pHeight = pHeight;
-        this.setImage("images/gameP/flavor" + (i + 1) + ".png");
+        imagePath = ("images/gameP/flavor" + (i + 1) + ".png");
+        this.setImage(imagePath);
         this.x = (int) (Math.round(Math.random() * (this.pWidth - this.width / 2)));
         this.y = 25;
         this.setPosition(this.x, this.y);
@@ -57,4 +60,9 @@ public class flavorSprite extends sprite {
             setPosition(this.x, this.y);
     }
     
+    public void moveStuck(int x, int y) {
+            this.x = x + this.width / 2;
+            this.y = y;
+            setPosition(this.x, this.y);
+    }
 }

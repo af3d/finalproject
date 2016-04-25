@@ -77,8 +77,4 @@ public class menuBarJPanel extends JPanel {
     public void setPaused(boolean isPaused) {
         bPause.setAltImage(isPaused);
     }
-
-    //public boolean getPaused() {
-    //    return paused;
-    //}
 }
