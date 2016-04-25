@@ -2,11 +2,10 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class myJFrame extends JFrame {
+public class myJFrame extends JFrame{
 
     public myJFrame() {
         super("Berkey Creamery");
-
         myJPanel mPanel = new myJPanel();
 
         getContentPane().add(mPanel, "Center");
@@ -17,5 +16,6 @@ public class myJFrame extends JFrame {
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setVisible(true);
     }
+
 
 }

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class flavorSprite extends sprite {
 
-    int speed = 5, pWidth, pHeight, flavor;
+    int speed = 5, pWidth, pHeight, flavor, offset;
     soundPlayer flavorDrop, flavorMiss;
     boolean muted, caught = false, stop = false;
     String imagePath;
@@ -56,7 +56,7 @@ public class flavorSprite extends sprite {
     }
     
     public void moveX(int x) {
-            this.x = x;
+            this.x = x+offset;
             setPosition(this.x, this.y);
     }
     
