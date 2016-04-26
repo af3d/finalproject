@@ -15,12 +15,14 @@ public abstract class sprite extends JButton {
         setIcon(icon);
         setBorderPainted(false);
         setContentAreaFilled(false);
-        setFocusPainted(false);
+        setFocusable(false);
         this.width = icon.getIconWidth();
         this.height = icon.getIconHeight();
     }
 
     public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
         setBounds(x, y, this.width, this.height);
     }
 }

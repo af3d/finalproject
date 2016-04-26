@@ -83,7 +83,6 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         } else {
             remove(optionsP);
         }
-
         revalidate();
         repaint();
     }
@@ -95,7 +94,6 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
         if (obj == mBarP.bReturn) {
             gameOptions.storeOptions();
             switchPanel("menu");
-
         }
 
         if (obj == menuP.bInst) {
