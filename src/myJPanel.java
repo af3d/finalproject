@@ -26,10 +26,11 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
 
         //Initialize Panels        
         instP = new instJPanel();
-        scoresP = new scoresJPanel(scores);
+        
         creditsP = new creditsJPanel();
         optionsP = new optionsJPanel(gameOptions);
         gameP = new gameJPanel(gameOptions, scores);
+        scoresP = new scoresJPanel(scores, gameP);
         menuP = new menuJPanel();
         mBarP = new menuBarJPanel(gameOptions);
 
@@ -41,6 +42,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
                 }
             }            
         }
+        gameP.gameT.addActionListener(this);
         //Add panels
         switchPanel("menu");
     }
@@ -69,6 +71,7 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             remove(instP);
         }
         if (state.equals("scores")) {
+            scoresP = new scoresJPanel(scores, gameP);
             add(scoresP, "Center");
         } else {
             remove(scoresP);
@@ -111,6 +114,13 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             mBarP.setVisButtons(3);
 
         }
+        
+        if (obj == gameP.gameT && gameP.time >= 10){
+            gameP.gQuit();
+            switchPanel("scores");
+            mBarP.setVisButtons(3);
+            scoresP.newHighScore(true);
+        }
 
         if (obj == mBarP.bGiveUp) {
             gameP.gQuit();
@@ -127,8 +137,8 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             switchPanel("game");
             mBarP.setVisButtons(1);
             gameOptions.storeOptions();
-
         }
+      
 
         // Toggles pause status
         if (obj == mBarP.bPause) {

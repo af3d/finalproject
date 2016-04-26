@@ -22,7 +22,7 @@ public class gameJPanel extends JPanel implements MouseMotionListener, ActionLis
             addSpeed = 0, flavorsCaught = 0;
     double scoreMult = 1d;
     Timer flavorT, gameT, flavorMoveT;
-    JTextArea stats;
+    JTextArea stats, scoresText;
 
     public gameJPanel(options inOpt, scoreKeeper inScores) {
         super(true);
@@ -41,6 +41,12 @@ public class gameJPanel extends JPanel implements MouseMotionListener, ActionLis
 
     // starts game loops
     public void gameStart() {
+                score = 0;
+                flavorCount = 0;
+                flavorWait = 0;
+                lives = 5;
+                time = 0;
+                flavorsCaught = 0;
         switch (gameOpt.mode) {
             case 1: // Easy mode
                 flavorDelay = 250;
@@ -93,13 +99,6 @@ public class gameJPanel extends JPanel implements MouseMotionListener, ActionLis
         flavorT.stop();
         gameT.stop();
         gameKill = true;
-        flavorCount = 0;
-        flavorWait = 0;
-        lives = 5;
-        score = 0;
-        time = 0;
-        flavorsCaught = 0;
-
     }
 
     public void addFlavor() {
@@ -194,25 +193,7 @@ public class gameJPanel extends JPanel implements MouseMotionListener, ActionLis
     }
 
     public void updateTime() {
-        /*switch (gameOpt.mode) {
-                    case 1: // Normal mode
-                        time++;
-                        stats.setText("Score: " + score + "     Elapsed Time: " + getTime());
-                        break;
-                    case 2: // Marathon mode
-                        time--;
-                        stats.setText("Score: " + score + "     Remaining Time: " + getTime());
-                        break;
-                    case 3: // Survival mode
-                        time++;
-                        stats.setText("Score: " + score + "     Elapsed Time: --:--");
-                        //Increases speed every 5 seconds for marathon mode
-                        if (time % 5 == 0) {
-                            addSpeed++;
-                        }   
-                        break;
-                }*/
-        stats.setText("Score: " + score + "     Caught: " + flavorsCaught + "     Elapsed Time: " + getTime());
+            stats.setText("Score: " + score + "     Caught: " + flavorsCaught + "     Elapsed Time: " + getTime());
     }
 
     @Override

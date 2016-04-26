@@ -43,8 +43,18 @@ public class scoreKeeper {
         xr.closeWriterXML();
     }
     
-    public void checkScore() {
-      
+    public boolean checkScore(int inScore) {
+      XML_240 xr = new XML_240();
+        boolean newScore = false;
+        xr.openReaderXML(saveFile);
+        for (int x = 0; x < MAX_SCORES_SAVED; x++) {
+            if (inScore >= scoreList[x]) {
+                newScore = true;
+                break;
+            }
+        }
+        xr.closeReaderXML();
+        return newScore;
     }
     
     public String getHighScores() {
@@ -55,9 +65,9 @@ public class scoreKeeper {
             nameList[x] = new String();
             nameList[x] = (String) xr.ReadObject();
             scoreList[x] = (int) xr.ReadObject();
-            returnList+=(x + ": " + nameList[x] + " Score: " + scoreList[x] + "\n");
+            returnList+=(x + 1 + ": " + nameList[x] + " Score: " + scoreList[x] + "\n");
         }
-        //System.out.print(returnList);
+        System.out.print(returnList);
         xr.closeReaderXML();
         return returnList;
     }
