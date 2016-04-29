@@ -15,6 +15,7 @@ public class scoresJPanel extends JPanel {
         JScores.setBackground(Color.LIGHT_GRAY);
         JScores.setFont(new Font(Font.MONOSPACED, Font.BOLD, fontSize));
         JScores.setText(scores.getHighScores());
+        JScores.setEditable(false);
         add(JScores);
     }
     public void updateScores(){
