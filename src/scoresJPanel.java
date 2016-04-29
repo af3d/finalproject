@@ -17,4 +17,7 @@ public class scoresJPanel extends JPanel {
         JScores.setText(scores.getHighScores());
         add(JScores);
     }
+    public void updateScores(){
+        JScores.setText(scores.getHighScores());
+    }
 }

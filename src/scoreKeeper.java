@@ -3,22 +3,12 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Adam
- */
 public class scoreKeeper {
-    String[] nameList = new String[10];
-    int[] scoreList = new int[10];
+    int MAX_SCORES_SAVED = 10;
+    String[] nameList = new String[MAX_SCORES_SAVED];
+    int[] scoreList = new int[MAX_SCORES_SAVED];
     String blank = "Name: ------- Date: ------";
     int blankScore = 0;
-    int MAX_SCORES_SAVED = 10;
     String saveFile = "HighScores.xml";
     
     
@@ -27,10 +17,11 @@ public class scoreKeeper {
         if(!f.exists()) {
             try {
                 f.createNewFile();
+                System.out.println("Creating new file");
+                setBlank();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            setBlank();
         }
     }
     public void setBlank() {

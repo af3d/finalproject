@@ -62,6 +62,7 @@ public class menuBarJPanel extends JPanel {
             }
             case 3: { // Status 3: Placehoder for other panels
                 bReturn.setVisible(true);
+                break;
             }
             default: {
                 System.out.println("no supported default");

@@ -22,7 +22,6 @@ public class flavorSprite extends sprite {
             Logger.getLogger(flavorSprite.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     public void setFlavor(int i, int pWidth, int pHeight) {
         this.flavor = i;
@@ -35,34 +34,37 @@ public class flavorSprite extends sprite {
         this.setPosition(this.x, this.y);
 
     }
-    
+
     public void fall() {
-        
+
         if (!this.stop && !this.caught) {
             this.y += speed;
             setPosition(this.x, this.y);
-
-                if (this.y >= this.pHeight) {
-                    stop = true;
-                }
-
             if (!muted) {
                 flavorDrop.play();
-                if (this.y >= this.pHeight) {
+            }
+            if (this.y + this.height >= this.pHeight) {
+                stop = true;
+                this.setVisible(false);
+                gameJPanel parent = ((gameJPanel) this.getParent());
+                parent.lives--;
+                parent.updateStats();
+                
+                if (!muted) {
                     flavorMiss.play();
                 }
             }
         }
     }
-    
+
     public void moveX(int x) {
-            this.x = x+offset;
-            setPosition(this.x, this.y);
+        this.x = x + offset;
+        setPosition(this.x, this.y);
     }
-    
+
     public void moveStuck(int x, int y) {
-            this.x = x + this.width / 2;
-            this.y = y;
-            setPosition(this.x, this.y);
+        this.x = x + this.width / 2;
+        this.y = y;
+        setPosition(this.x, this.y);
     }
 }

@@ -69,7 +69,9 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
             remove(instP);
         }
         if (state.equals("scores")) {
+            scoresP.updateScores();
             add(scoresP, "Center");
+            mBarP.setVisButtons(3);
         } else {
             remove(scoresP);
         }
@@ -108,8 +110,6 @@ public class myJPanel extends JPanel implements ActionListener, ChangeListener {
 
         if (obj == menuP.bScores) {
             switchPanel("scores");
-            mBarP.setVisButtons(3);
-
         }
 
         if (obj == mBarP.bGiveUp) {
